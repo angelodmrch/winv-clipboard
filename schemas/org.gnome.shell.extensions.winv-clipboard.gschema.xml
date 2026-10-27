@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.winv-clipboard" path="/org/gnome/shell/extensions/winv-clipboard/">
+    <key name="toggle-shortcut" type="as">
+      <default><![CDATA[['<Super>v']]]></default>
+      <summary>Shortcut that opens the clipboard popup</summary>
+    </key>
+    <key name="history-size" type="i">
+      <range min="5" max="200"/>
+      <default>25</default>
+      <summary>How many unpinned items to keep (Windows keeps 25)</summary>
+    </key>
+    <key name="paste-on-select" type="b">
+      <default>true</default>
+      <summary>Paste into the focused app when an item is chosen</summary>
+      <description>When off, choosing an item only puts it on the clipboard.</description>
+    </key>
+    <key name="track-images" type="b">
+      <default>true</default>
+      <summary>Keep copied images in the history</summary>
+    </key>
+    <key name="persist-history" type="b">
+      <default>false</default>
+      <summary>Keep unpinned items after logging out</summary>
+      <description>Windows forgets unpinned items on restart and keeps pinned ones. Turn this on to keep everything.</description>
+    </key>
+  </schema>
+</schemalist>

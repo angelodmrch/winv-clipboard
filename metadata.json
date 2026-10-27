@@ -1,0 +1,10 @@
+{
+  "uuid": "winv-clipboard@angelo",
+  "name": "Win+V Clipboard",
+  "description": "Clipboard history that works like Windows Win+V. Press Super+V to open a popup at the cursor with your recent text and images, then click or press Enter to paste. Pin items to keep them, delete items, or clear everything.",
+  "shell-version": ["45", "46", "47", "48", "49", "50"],
+  "session-modes": ["user", "unlock-dialog"],
+  "settings-schema": "org.gnome.shell.extensions.winv-clipboard",
+  "url": "",
+  "version": 4
+}

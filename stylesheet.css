@@ -1,0 +1,60 @@
+.winv-panel {
+  background-color: rgba(36, 36, 40, 0.97);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+  color: #f2f2f2;
+  spacing: 8px;
+}
+
+.winv-header { padding: 2px 4px 4px 6px; }
+.winv-title { font-weight: bold; font-size: 11pt; }
+
+.winv-clear {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 9.5pt;
+  color: #9cc7ff;
+}
+.winv-clear:hover, .winv-clear:focus { background-color: rgba(255, 255, 255, 0.1); }
+
+.winv-list { spacing: 6px; padding-right: 4px; }
+
+.winv-item {
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 10px 6px 10px 12px;
+  min-height: 40px;
+}
+.winv-item:hover { background-color: rgba(255, 255, 255, 0.1); }
+.winv-item:selected {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: #6aa9ff;
+}
+
+.winv-text { font-size: 10pt; }
+
+.winv-image {
+  height: 110px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 0 50%;
+}
+
+.winv-actions { spacing: 2px; padding-left: 6px; }
+.winv-action {
+  padding: 5px;
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.55);
+}
+.winv-action:hover { background-color: rgba(255, 255, 255, 0.12); color: #ffffff; }
+.winv-action:checked { color: #6aa9ff; }
+.winv-item.pinned .winv-action:checked { color: #6aa9ff; }
+
+.winv-empty { padding: 40px 20px; spacing: 8px; }
+.winv-empty-title { font-weight: bold; font-size: 11pt; text-align: center; }
+.winv-empty-text { color: rgba(255, 255, 255, 0.65); text-align: center; }
+
+.winv-item-body { padding: 0; border-radius: 6px; text-align: left; }
