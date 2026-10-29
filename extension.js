@@ -47,19 +47,16 @@ class History {
         } catch {
             this.items = [];
         }
-        // Windows drops unpinned items on restart unless you keep them.
-        if (!this._settings.get_boolean('persist-history'))
-            this.items = this.items.filter(i => i.pinned);
+        // Like Windows, only pinned items survive a restart. Unpinned ones
+        // are never written to disk, but drop any left by older versions.
+        this.items = this.items.filter(i => i.pinned);
         this._removeOrphanImages();
         this.save();
     }
 
     save() {
-        // Unpinned items always live in memory for the session; only write
-        // them to disk when the user asked to keep them.
-        const keep = this._settings.get_boolean('persist-history')
-            ? this.items : this.items.filter(i => i.pinned);
-        const data = new TextEncoder().encode(JSON.stringify(keep));
+        // Unpinned items live in memory only, so a restart clears them.
+        const data = new TextEncoder().encode(JSON.stringify(this.items.filter(i => i.pinned)));
         try {
             this._index.replace_contents(data, null, false,
                 Gio.FileCreateFlags.PRIVATE | Gio.FileCreateFlags.REPLACE_DESTINATION, null);
@@ -192,9 +189,6 @@ export default class WinVClipboardExtension extends Extension {
                 this._captureClipboard();
         });
 
-        this._settingsChangedId = this._settings.connect('changed::persist-history',
-            () => this._history.save());
-
         this._freeSuperV();
         Main.wm.addKeybinding('toggle-shortcut', this._settings, Meta.KeyBindingFlags.NONE,
             Shell.ActionMode.NORMAL | Shell.ActionMode.OVERVIEW | Shell.ActionMode.POPUP,
@@ -216,7 +210,6 @@ export default class WinVClipboardExtension extends Extension {
         this._restoreSuperV();
         Main.sessionMode.disconnect(this._sessionId);
         this._settings.disconnect(this._shortcutChangedId);
-        this._settings.disconnect(this._settingsChangedId);
         this._selection.disconnect(this._ownerChangedId);
         if (this._pasteTimeoutId) {
             GLib.source_remove(this._pasteTimeoutId);

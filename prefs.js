@@ -42,8 +42,6 @@ export default class WinVClipboardPreferences extends ExtensionPreferences {
             ['paste-on-select', _('Paste when an item is chosen'),
                 _('Off: choosing an item only copies it, and you paste yourself')],
             ['track-images', _('Keep copied images'), ''],
-            ['persist-history', _('Keep history after logging out'),
-                _('Windows only keeps pinned items. Turn on to keep everything on disk')],
         ];
         for (const [key, title, subtitle] of switches) {
             const row = new Adw.SwitchRow({title, subtitle});

@@ -9,7 +9,9 @@ extension so it works on Ubuntu's default Wayland session as well as X11.
 - Remembers **text and images**.
 - **Click** an item, or pick it with the arrow keys and press **Enter**, and it
   is pasted into the app you were using (terminals get Ctrl+Shift+V).
-- **Pin** items (pin button or `P`) so they survive "Clear all" and logging out.
+- **Pin** items (pin button or `P`) so they survive "Clear all" and restarts.
+  Unpinned items are kept in memory only and are cleared when you restart or
+  log out, like Windows.
 - **Delete** one item (bin button or `Delete`) or **Clear all** (pinned items stay).
 - `Esc` or a click outside closes the popup.
 - Keeps 25 items by default, like Windows. Copies that password managers mark
@@ -27,11 +29,11 @@ Download the `.deb` from the Releases page, then:
 sudo apt install ./gnome-shell-extension-winv-clipboard_<version>_all.deb
 ```
 
-Log out and back in, then enable it as your normal user:
-
-```bash
-gnome-extensions enable winv-clipboard@angelo
-```
+The package turns the extension on for everyone who is logged in and shows a
+notification with a **Log out now** button. GNOME only loads the new code after
+you log out and back in, so do that when the notification appears (on an update
+too). If you are not logged in to GNOME while installing, enable it later with
+`gnome-extensions enable winv-clipboard@angelo`.
 
 ### From source (current user only)
 
@@ -50,15 +52,14 @@ update needs a log out and back in.
 ## Settings
 
 `gnome-extensions prefs winv-clipboard@angelo` (or the Extensions app):
-shortcut, number of items, paste on select, keep images, keep history after
-logging out.
+shortcut, number of items, paste on select, keep images.
 
 GNOME normally uses Super+V for the notification list. While this extension is
 on it takes Super+V over (Super+M still opens notifications) and gives it back
 when disabled.
 
-History lives in `~/.local/share/winv-clipboard/`. By default only pinned items
-are written to disk, like Windows.
+Pinned items are saved in `~/.local/share/winv-clipboard/` (readable only by
+you). Unpinned items are never written there.
 
 ## Development
 

@@ -19,10 +19,5 @@
       <default>true</default>
       <summary>Keep copied images in the history</summary>
     </key>
-    <key name="persist-history" type="b">
-      <default>false</default>
-      <summary>Keep unpinned items after logging out</summary>
-      <description>Windows forgets unpinned items on restart and keeps pinned ones. Turn this on to keep everything.</description>
-    </key>
   </schema>
 </schemalist>

@@ -24,6 +24,7 @@ Version: $VERSION
 Architecture: all
 Maintainer: Angelo <angelodmrch@gmail.com>
 Depends: gnome-shell (>= 45)
+Recommends: libnotify-bin
 Section: gnome
 Priority: optional
 Description: Windows-style Win+V clipboard history for GNOME
@@ -32,20 +33,7 @@ Description: Windows-style Win+V clipboard history for GNOME
  Pin, delete and clear items. Works on Wayland and X11.
 CONTROL
 
-cat > "$ROOT/DEBIAN/postinst" <<'POSTINST'
-#!/bin/sh
-set -e
-if [ "$1" = "configure" ]; then
-  echo ""
-  echo "Win+V Clipboard is installed."
-  echo "Log out and back in, then run (as your normal user, not root):"
-  echo "    gnome-extensions enable winv-clipboard@angelo"
-  echo "If you installed it before from a zip, remove that copy first:"
-  echo "    rm -rf ~/.local/share/gnome-shell/extensions/winv-clipboard@angelo"
-  echo ""
-fi
-exit 0
-POSTINST
+cp "$SRC/packaging/postinst" "$ROOT/DEBIAN/postinst"
 chmod 755 "$ROOT/DEBIAN/postinst"
 
 mkdir -p "$SRC/dist"
